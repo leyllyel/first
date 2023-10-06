@@ -33,7 +33,7 @@ public class Main {
 
         writeString(json, "data.json");
 
-        List<Employee> employees2 = parseXML("src/data.xml");
+        List<Employee> employees2 = parseXML("data.xml");
         String json2 = listToJson(employees2);
         writeString(json2, "data2.json");
     }
@@ -55,11 +55,11 @@ public class Main {
         }
     }
 
-    public static String listToJson(List<Employee> employees) {
+    public static String listToJson(List<Employee> employees2) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Type listType = new TypeToken<List<Employee>>() {
         }.getType();
-        return gson.toJson(employees, listType);
+        return gson.toJson(employees2, listType);
     }
 
     public static void writeString(String json, String fileName) {
@@ -71,7 +71,7 @@ public class Main {
     }
 
     public static List<Employee> parseXML(String fileName) {
-        List<Employee> employees = new ArrayList<>();
+        List<Employee> employees2 = new ArrayList<>();
 
         try {
             File file = new File(fileName);
@@ -101,14 +101,14 @@ public class Main {
                     employee.setCountry(country);
                     employee.setAge(age);
 
-                    employee.add(employee);
+                    employees2.add(employee);
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return employees;
+        return employees2;
     }
 
 }
